@@ -1,4 +1,4 @@
-TFSHelper
+Tosan TFSHelper
 =========
 
 An Extension on top of the Microsoft team foundation server (TFS) service.
