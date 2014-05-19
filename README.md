@@ -1,7 +1,8 @@
 Tosan TFSHelper
 =========
 
-An Extension on top of the Microsoft team foundation server (TFS) service to provides set of services which is not available through TFS service itself. It shouldn't be any problems using this extension with TFS 2012 and 2013.
+An Extension on top of the Microsoft team foundation server (TFS) service to provides set of services which is not available through TFS service itself. 
+It shouldn't be any problem using this extension with TFS 2012 and 2013.
 
 
 This is an inprogress project and I'm working on it at the moment. 
