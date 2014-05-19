@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using Microsoft.TeamFoundation.WorkItemTracking.Client;
+﻿using Microsoft.TeamFoundation.WorkItemTracking.Client;
 using Tosan.TFSHelper;
-using Tosan.TFSHelper.Model;
 
 namespace Tosan.TFSHelperTest
 {
