@@ -1,0 +1,431 @@
+﻿<Activity mc:Ignorable="sads sap sap2010" x:Class="TfsBuild.Process" this:Process.AutomatedTests="[{ New Microsoft.TeamFoundation.Build.Common.BuildParameter(&quot; { &quot;&quot;AssemblyFileSpec&quot;&quot;: &quot;&quot;**\\*test*.dll;**\\*test*.appx&quot;&quot;, &quot;&quot;RunSettingsFileName&quot;&quot;: null, &quot;&quot;TestCaseFilter&quot;&quot;: &quot;&quot;&quot;&quot;, &quot;&quot;RunSettingsForTestRun&quot;&quot;: { &quot;&quot;ServerRunSettingsFile&quot;&quot;: &quot;&quot;&quot;&quot;, &quot;&quot;TypeRunSettings&quot;&quot;: &quot;&quot;Default&quot;&quot;, &quot;&quot;HasRunSettingsFile&quot;&quot;: false }, &quot;&quot;HasRunSettingsFile&quot;&quot;: false, &quot;&quot;HasTestCaseFilter&quot;&quot;: false, &quot;&quot;ExecutionPlatform&quot;&quot;: &quot;&quot;X86&quot;&quot;, &quot;&quot;FailBuildOnFailure&quot;&quot;: false, &quot;&quot;RunName&quot;&quot;: &quot;&quot;&quot;&quot; } &quot;) }]" this:Process.AdvancedTestSettings="[New Microsoft.TeamFoundation.Build.Common.BuildParameter(&quot; { &quot;&quot;AnalyzeTestImpact&quot;&quot;: true, &quot;&quot;DisableTests&quot;&quot;: false, &quot;&quot;PreActionScriptPath&quot;&quot;: &quot;&quot;&quot;&quot;, &quot;&quot;PreActionScriptArguments&quot;&quot;: &quot;&quot;&quot;&quot;, &quot;&quot;PostActionScriptPath&quot;&quot;: &quot;&quot;&quot;&quot;, &quot;&quot;PostActionScriptArguments&quot;&quot;: &quot;&quot;&quot;&quot; } &quot;)]" this:Process.BuildNumberFormat="[&quot;$(BuildDefinitionName)_$(Date:yyyyMMdd)$(Rev:.r)&quot;]" this:Process.CleanWorkspace="[True]" this:Process.CreateLabel="[True]" this:Process.AdvancedBuildSettings="[New Microsoft.TeamFoundation.Build.Common.BuildParameter(&quot; { &quot;&quot;MSBuildArguments&quot;&quot;: &quot;&quot;&quot;&quot;, &quot;&quot;MSBuildPlatform&quot;&quot;: &quot;&quot;Auto&quot;&quot;, &quot;&quot;PreActionScriptPath&quot;&quot;: &quot;&quot;&quot;&quot;, &quot;&quot;PreActionScriptArguments&quot;&quot;: &quot;&quot;&quot;&quot;, &quot;&quot;PostActionScriptPath&quot;&quot;: &quot;&quot;&quot;&quot;, &quot;&quot;PostActionScriptArguments&quot;&quot;: &quot;&quot;&quot;&quot;, &quot;&quot;RunCodeAnalysis&quot;&quot;: &quot;&quot;AsConfigured&quot;&quot; } &quot;)]" this:Process.AgentSettings="[New Microsoft.TeamFoundation.Build.Common.BuildParameter(&quot; { &quot;&quot;MaxExecutionTime&quot;&quot;: &quot;&quot;00:00:00&quot;&quot;, &quot;&quot;MaxWaitTime&quot;&quot;: &quot;&quot;04:00:00&quot;&quot;, &quot;&quot;Name&quot;&quot;: &quot;&quot;*&quot;&quot;, &quot;&quot;Tags&quot;&quot;: [], &quot;&quot;TagComparison&quot;&quot;: &quot;&quot;MatchExactly&quot;&quot; } &quot;)]" this:Process.CleanBuild="[True]" this:Process.OutputLocation="[&quot;SingleFolder&quot;]" this:Process.CreateWorkItem="[True]" this:Process.UpdateAssociatedWorkItems="[True]" this:Process.SupportedReasons="All" this:Process.BuildProcessVersion="12.0" this:Process.IsNugetPack="True" this:Process.IsNugetPublish="True"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mt="clr-namespace:Microsoft.TeamFoundation;assembly=Microsoft.TeamFoundation.Common"
+ xmlns:mtba="clr-namespace:Microsoft.TeamFoundation.Build.Activities;assembly=Microsoft.TeamFoundation.Build.Activities"
+ xmlns:mtbac="clr-namespace:Microsoft.TeamFoundation.Build.Activities.Core;assembly=Microsoft.TeamFoundation.Build.Activities"
+ xmlns:mtbag="clr-namespace:Microsoft.TeamFoundation.Build.Activities.Git;assembly=Microsoft.TeamFoundation.Build.Activities"
+ xmlns:mtbat="clr-namespace:Microsoft.TeamFoundation.Build.Activities.TeamFoundation;assembly=Microsoft.TeamFoundation.Build.Activities"
+ xmlns:mtbc="clr-namespace:Microsoft.TeamFoundation.Build.Common;assembly=Microsoft.TeamFoundation.Build.Common"
+ xmlns:mtbc1="clr-namespace:Microsoft.TeamFoundation.Build.Client;assembly=Microsoft.TeamFoundation.Build.Client"
+ xmlns:mtbc2="clr-namespace:Microsoft.TeamFoundation.Build.Common;assembly=Microsoft.TeamFoundation.Build.Workflow"
+ xmlns:mtbw="clr-namespace:Microsoft.TeamFoundation.Build.Workflow;assembly=Microsoft.TeamFoundation.Build.Workflow"
+ xmlns:mtbwa="clr-namespace:Microsoft.TeamFoundation.Build.Workflow.Activities;assembly=Microsoft.TeamFoundation.Build.Workflow"
+ xmlns:mtbwt="clr-namespace:Microsoft.TeamFoundation.Build.Workflow.Tracking;assembly=Microsoft.TeamFoundation.Build.Workflow"
+ xmlns:mttbb="clr-namespace:Microsoft.TeamFoundation.TestImpact.BuildIntegration.BuildActivities;assembly=Microsoft.TeamFoundation.TestImpact.BuildIntegration"
+ xmlns:mtvc="clr-namespace:Microsoft.TeamFoundation.VersionControl.Client;assembly=Microsoft.TeamFoundation.VersionControl.Client"
+ xmlns:mtvc1="clr-namespace:Microsoft.TeamFoundation.VersionControl.Common;assembly=Microsoft.TeamFoundation.VersionControl.Common"
+ xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:s1="clr-namespace:System;assembly=System.ComponentModel.Composition"
+ xmlns:s2="clr-namespace:System;assembly=System.Core"
+ xmlns:s3="clr-namespace:System;assembly=System"
+ xmlns:sa="clr-namespace:System.Activities;assembly=System.Activities"
+ xmlns:sad="clr-namespace:System.Activities.Debugger;assembly=System.Activities"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sl="clr-namespace:System.Linq;assembly=System.Core"
+ xmlns:this="clr-namespace:TfsBuild"
+ xmlns:ttba="clr-namespace:Tosan.TeamFoundation.Build.Activities;assembly=Tosan.TeamFoundation.Build.Activities"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="ProjectsToBuild" Type="InArgument(s:String[])" />
+    <x:Property Name="ConfigurationsToBuild" Type="InArgument(s:String[])" />
+    <x:Property Name="AutomatedTests" Type="InArgument(mtbc:BuildParameter[])" />
+    <x:Property Name="AdvancedTestSettings" Type="InArgument(mtbc:BuildParameter)" />
+    <x:Property Name="BuildNumberFormat" Type="InArgument(x:String)" />
+    <x:Property Name="GetVersion" Type="InArgument(x:String)" />
+    <x:Property Name="CleanWorkspace" Type="InArgument(x:Boolean)" />
+    <x:Property Name="CreateLabel" Type="InArgument(x:Boolean)" />
+    <x:Property Name="AdvancedBuildSettings" Type="InArgument(mtbc:BuildParameter)" />
+    <x:Property Name="AgentSettings" Type="InArgument(mtbc:BuildParameter)" />
+    <x:Property Name="CleanBuild" Type="InArgument(x:Boolean)" />
+    <x:Property Name="OutputLocation" Type="InArgument(x:String)" />
+    <x:Property Name="SymbolStorePath" Type="InArgument(x:String)" />
+    <x:Property Name="CreateWorkItem" Type="InArgument(x:Boolean)" />
+    <x:Property Name="UpdateAssociatedWorkItems" Type="InArgument(x:Boolean)" />
+    <x:Property Name="Metadata" Type="mtbw:ProcessParameterMetadataCollection" />
+    <x:Property Name="SupportedReasons" Type="mtbc1:BuildReason" />
+    <x:Property Name="BuildProcessVersion" Type="x:String" />
+    <x:Property Name="IsNugetPack" Type="InArgument(x:Boolean)" />
+    <x:Property Name="IsNugetPublish" Type="InArgument(x:Boolean)" />
+    <x:Property Name="NugetPackScriptPath" Type="InArgument(x:String)" />
+    <x:Property Name="NugetPublishScriptPath" Type="InArgument(x:String)" />
+    <x:Property Name="VersioningScriptPath" Type="InArgument(x:String)" />
+    <x:Property Name="VersioningBuildType" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:Process.ProjectsToBuild>
+    <InArgument x:TypeArguments="s:String[]" />
+  </this:Process.ProjectsToBuild>
+  <this:Process.ConfigurationsToBuild>
+    <InArgument x:TypeArguments="s:String[]" />
+  </this:Process.ConfigurationsToBuild>
+  <this:Process.GetVersion>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.GetVersion>
+  <this:Process.SymbolStorePath>
+    <InArgument x:TypeArguments="x:String" />
+  </this:Process.SymbolStorePath>
+  <this:Process.Metadata>
+    <mtbw:ProcessParameterMetadataCollection>
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#100 TF Version Control" Description="Set this to true to start with a clean workspace on each build." DisplayName="1. Clean workspace" ParameterName="CleanWorkspace" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#100 TF Version Control" Description="Set this to true to create a version control label during the build. Labels are never created for private builds." DisplayName="3. Label Sources" ParameterName="CreateLabel" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#100 TF Version Control" Description="Specify the version of files to get from source control.  If set, this value overrides the IBuildDetail.SourceGetVersion property.  The value provided should be a valid source control versionspec like C12345." DisplayName="2. Get version" ParameterName="GetVersion" />
+      <mtbw:ProcessParameterMetadata Category="#200 Build" Description="Server paths to the solution/project files you want to build." DisplayName="1. Projects" Editor="Microsoft.TeamFoundation.Build.Controls.BuildProjectListEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="ProjectsToBuild" Required="True" />
+      <mtbw:ProcessParameterMetadata Category="#200 Build" Description="Specify the configurations you want to build (i.e. Debug|x86)." DisplayName="2. Configurations" Editor="Microsoft.TeamFoundation.Build.Controls.PlatformConfigurationListEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="ConfigurationsToBuild" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#200 Build" Description="Set this to true to perform a clean build." DisplayName="3. Clean build" ParameterName="CleanBuild" />
+      <mtbw:ProcessParameterMetadata Category="#200 Build" Description="Specify the type of location that outputs should be created in: SingleFolder, PerProject, AsConfigured." DisplayName="4. Output location" Editor="@DropDownList=SingleFolder,PerProject,AsConfigured" ParameterName="OutputLocation" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#200 Build" Description="" DisplayName="5. Advanced" ParameterName="AdvancedBuildSettings" ValueFormatString=" " />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Specify additional MSBuild arguments." DisplayName="MSBuild arguments" ParameterName="AdvancedBuildSettings.MSBuildArguments" />
+      <mtbw:ProcessParameterMetadata Description="Specify the MSBuild platform to use. Defaults to the OS." DisplayName="MSBuild platform" Editor="@DropDownList=Auto,X86" ParameterName="AdvancedBuildSettings.MSBuildPlatform" />
+      <mtbw:ProcessParameterMetadata Description="Specify the path to a custom script that runs before the MSBuild activity starts." DisplayName="Pre-build script path" Editor="Microsoft.TeamFoundation.Build.Controls.ServerFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="AdvancedBuildSettings.PreActionScriptPath" ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata Description="Specify the command line arguments to pass to the script that runs before the MSBuild activity starts." DisplayName="Pre-build script arguments" ParameterName="AdvancedBuildSettings.PreActionScriptArguments" ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata Description="Specify the path to a custom script that runs after the MSBuild activity successfully completes." DisplayName="Post-build script path" Editor="Microsoft.TeamFoundation.Build.Controls.ServerFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="AdvancedBuildSettings.PostActionScriptPath" ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata Description="Specify the command line arguments to pass to the script that runs after the MSBuild activity successfully completes." DisplayName="Post-build script arguments" ParameterName="AdvancedBuildSettings.PostActionScriptArguments" ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata Description="Specify AsConfigured to run code analysis according to project settings; Never to never run code analysis; Always to always run code analysis." DisplayName="Perform code analysis" Editor="@DropDownList=Never,AsConfigured,Always" ParameterName="AdvancedBuildSettings.RunCodeAnalysis" />
+      <mtbw:ProcessParameterMetadata Category="#250 Test" Description="Specify the test assemblies or test metadata files on which to run tests.  You can skip running these tests by setting the Disable Tests setting to True." DisplayName="1. Automated tests" Editor="Microsoft.TeamFoundation.Build.Controls.AgileTestSpecListEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="AutomatedTests" ValueFormatString="{}{Count} set(s) of tests specified." />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" DisplayName="Test source" Editor="Microsoft.TeamFoundation.Build.Controls.AgileTestSpecEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="AutomatedTests.[Item]" ValueFormatString="{}{RunName} - Run tests in test sources matching {AssemblyFileSpec}, Target platform: '{ExecutionPlatform}'" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Specify the search pattern for locating test sources - e.g., **\\*test*.dll." DisplayName="Test sources spec" ParameterName="AutomatedTests.AssemblyFileSpec" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Never" ParameterName="AutomatedTests.HasRunSettingsFile" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Never" ParameterName="AutomatedTests.HasTestCaseFilter" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Never" ParameterName="AutomatedTests.RunSettingsFileName" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Use the specified filter to select tests to run based on filter criteria.  You can use the format &lt;property&gt;Operator&lt;value&gt; to construct your filter where Operator is one of =, != or ~ (Operator ~ has 'contains' semantics and is applicable for string properties like DisplayName).  You can also use the logical operator |, to construct your filter and parenthesis () for grouping.  For example, (FullyQualifiedName~Nightly|Name=MyTestMethod)" DisplayName="Test case filter" ParameterName="AutomatedTests.TestCaseFilter" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Specify run settings to be used for running the tests." DisplayName="Run settings" ParameterName="AutomatedTests.RunSettingsForTestRun" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Specify the Run Settings file to use with the test sources." DisplayName="Run settings file" Editor="Microsoft.TeamFoundation.Build.Controls.RunSettingsFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="AutomatedTests.RunSettingsForTestRun.ServerRunSettingsFile" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Select the type of run settings to use with test sources.  Values are Default, CodeCoverageEnabled, CodeCoverageEnabledForAspNetApps, UserSpecified." DisplayName="Type of run settings" Editor="@DropDownList=Default,CodeCoverageEnabled,CodeCoverageEnabledForAspNetApps,UserSpecified" ParameterName="AutomatedTests.RunSettingsForTestRun.TypeRunSettings" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Never" ParameterName="AutomatedTests.RunSettingsForTestRun.HasRunSettingsFile" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Specify target platform for test execution.  X86 or X64" DisplayName="Target platform for test execution" Editor="@DropDownList=X86,X64" ParameterName="AutomatedTests.ExecutionPlatform" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Set this to true to fail any builds where these tests do not pass.  The default is to mark the build as partially succeeded if the tests fail." DisplayName="Fail build on test failure" ParameterName="AutomatedTests.FailBuildOnFailure" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Specify the name the test run is published as." DisplayName="Test run name" ParameterName="AutomatedTests.RunName" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#250 Test" Description="" DisplayName="2. Advanced" ParameterName="AdvancedTestSettings" ValueFormatString=" " />
+      <mtbw:ProcessParameterMetadata Category="#250 Test" Description="Set this to true to perform test impact analysis." DisplayName="Analyze test impact" ParameterName="AdvancedTestSettings.AnalyzeTestImpact" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#250 Test" Description="Specify True to skip running all tests with the build; False to run tests as defined by the Automated Tests setting." DisplayName="Disable tests" ParameterName="AdvancedTestSettings.DisableTests" />
+      <mtbw:ProcessParameterMetadata Description="Specify the path to a custom script that runs before the activity starts." DisplayName="Pre-test script path" Editor="Microsoft.TeamFoundation.Build.Controls.ServerFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="AdvancedTestSettings.PreActionScriptPath" ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata Description="Specify the command line arguments to pass to the script that runs before the activity starts." DisplayName="Pre-test script arguments" ParameterName="AdvancedTestSettings.PreActionScriptArguments" ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata Description="Specify the path to a custom script that runs after the RunAgileTestRunner activity successfully completes." DisplayName="Post-test script path" Editor="Microsoft.TeamFoundation.Build.Controls.ServerFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="AdvancedTestSettings.PostActionScriptPath" ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata Description="Specify the command line arguments to pass to the script that runs after the RunAgileTestRunner activity successfully completes." DisplayName="Post-test script arguments" ParameterName="AdvancedTestSettings.PostActionScriptArguments" ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata Category="#300 Publish Symbols" Description="Specify the path to the symbol store share.  When this value is set, source indexing is a part of the build.  Source indexing is never performed for private builds." DisplayName="Path to publish symbols" ParameterName="SymbolStorePath" />
+      <mtbw:ProcessParameterMetadata Category="#400 Advanced" Description="Specify the format for the number of this build." DisplayName="Build number format" Editor="Microsoft.TeamFoundation.Build.Controls.BuildNumberFormatEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="BuildNumberFormat" />
+      <mtbw:ProcessParameterMetadata Category="#400 Advanced" Description="Specify the Name and/or Tags (and other properties) that will be used to select an appropriate Agent for the build." DisplayName="Agent settings" ParameterName="AgentSettings" ValueFormatString="Use agent where Name={Name} and Tags={Tags} ({TagComparison})" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Specify the maximum amount of time that you want to allow for this part of the work flow to run. The default value is zero which means there is no timeout." DisplayName="Maximum agent execution time" Editor="@Type=TimeSpan" ParameterName="AgentSettings.MaxExecutionTime" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Specify the maximum amount of time that you want to allow waiting for an agent. The default value is zero which means there is no timeout." DisplayName="Maximum agent reservation wait time" Editor="@Type=TimeSpan" ParameterName="AgentSettings.MaxWaitTime" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Specify the agent to use for this remote execution by display name (this is not the computer name). Supported wildcard characters include '*' and '?'." DisplayName="Name filter" Editor="Microsoft.TeamFoundation.Build.Controls.BuildAgentSelectionEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="AgentSettings.Name" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Specify the comparison method to use for tags when selecting a build agent. MatchExactly, MatchAtLeast" DisplayName="Tag comparison operator" Editor="@DropDownList=MatchExactly,MatchAtLeast" ParameterName="AgentSettings.TagComparison" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Description="Specify the tags used to select the build agent." DisplayName="Tags filter" Editor="Microsoft.TeamFoundation.Build.Controls.TagsEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="AgentSettings.Tags" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#400 Advanced" Description="Set this to true to create a work item when the build fails." DisplayName="Create work item on failure" ParameterName="CreateWorkItem" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#400 Advanced" Description="Set this to true to update the associated work items by setting the Fixed In Build field to the build number of this build." DisplayName="Update work items with build number" ParameterName="UpdateAssociatedWorkItems" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#900 NuGet Settings" Description="If want to pack packages and put them into the drop location as a nupkg files.&#xA;Default value always is True" DisplayName="Pack Nuget Packages" ParameterName="IsNugetPack" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#900 NuGet Settings" Description="If you want to publish packages to the remote server.&#xA;Default value always is True." DisplayName="Publish Nuget Packages to the Server" ParameterName="IsNugetPublish" />
+      <mtbw:ProcessParameterMetadata Category="#900 NuGet Settings" Description="The source control path of the nuget packing script that can be a powershell script.&#xA;The location must have been targeted for the build workspace." DisplayName="Nuget Packing Script Path" Editor="Microsoft.TeamFoundation.Build.Controls.ServerFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="NugetPackScriptPath" />
+      <mtbw:ProcessParameterMetadata Category="#900 NuGet Settings" Description="The source control path of the nuget publishing script that can be a powershell script.&#xA;The location must have been targeted for the build workspace." DisplayName="Nuget Publishing Script Path" Editor="Microsoft.TeamFoundation.Build.Controls.ServerFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="NugetPublishScriptPath" />
+      <mtbw:ProcessParameterMetadata BrowsableWhen="Always" Category="#900 Alter Versioning" DisplayName="Type of Build " Editor="@DropDownList=beta,major,minor,pre" ParameterName="VersioningBuildType" ValueFormatString="" />
+      <mtbw:ProcessParameterMetadata Category="#900 Alter Versioning" DisplayName="Pre Build Script Path" Editor="Microsoft.TeamFoundation.Build.Controls.ServerFileBrowserEditor, Microsoft.TeamFoundation.Build.Controls" ParameterName="VersioningScriptPath" />
+    </mtbw:ProcessParameterMetadataCollection>
+  </this:Process.Metadata>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>TfsBuild.Process_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>Microsoft.TeamFoundation</x:String>
+      <x:String>Microsoft.TeamFoundation.Build.Activities</x:String>
+      <x:String>Microsoft.TeamFoundation.Build.Activities.Core</x:String>
+      <x:String>Microsoft.TeamFoundation.Build.Activities.Git</x:String>
+      <x:String>Microsoft.TeamFoundation.Build.Activities.TeamFoundation</x:String>
+      <x:String>Microsoft.TeamFoundation.Build.Common</x:String>
+      <x:String>Microsoft.TeamFoundation.Build.Client</x:String>
+      <x:String>Microsoft.TeamFoundation.Build.Workflow</x:String>
+      <x:String>Microsoft.TeamFoundation.Build.Workflow.Activities</x:String>
+      <x:String>Microsoft.TeamFoundation.Build.Workflow.Tracking</x:String>
+      <x:String>Microsoft.TeamFoundation.TestImpact.BuildIntegration.BuildActivities</x:String>
+      <x:String>Microsoft.TeamFoundation.VersionControl.Client</x:String>
+      <x:String>Microsoft.TeamFoundation.VersionControl.Common</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities.Debugger</x:String>
+      <x:String>System.Activities.Debugger.Symbol</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>TfsBuild</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.TeamFoundation.Common</AssemblyReference>
+      <AssemblyReference>Microsoft.TeamFoundation.Build.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.TeamFoundation.Build.Common</AssemblyReference>
+      <AssemblyReference>Microsoft.TeamFoundation.Build.Client</AssemblyReference>
+      <AssemblyReference>Microsoft.TeamFoundation.Build.Workflow</AssemblyReference>
+      <AssemblyReference>Microsoft.TeamFoundation.TestImpact.BuildIntegration</AssemblyReference>
+      <AssemblyReference>Microsoft.TeamFoundation.VersionControl.Client</AssemblyReference>
+      <AssemblyReference>Microsoft.TeamFoundation.VersionControl.Common</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>Tosan.TeamFoundation.Build</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Overall build process" sap2010:WorkflowViewState.IdRef="Sequence_2">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="BuildVersionNumber" />
+    </Sequence.Variables>
+    <mtbac:SetBuildNumber DropLocation="{x:Null}" BuildNumberFormat="[BuildNumberFormat]" DisplayName="Update build number" sap2010:WorkflowViewState.IdRef="SetBuildNumber_1" />
+    <If Condition="[VersioningBuildType IsNot String.Empty]" DisplayName="" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Then>
+        <Sequence DisplayName="Altering The Build Version" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence.Variables>
+            <Variable x:TypeArguments="x:String" Name="AlteredBuildVersion" />
+          </Sequence.Variables>
+          <ttba:BuildNumberAlteration BuildNumber="{x:Null}" AlteredBuildNumber="[AlteredBuildVersion]" BuildType="[VersioningBuildType]" sap2010:WorkflowViewState.IdRef="BuildNumberAlteration_1" />
+          <mtbwa:WriteBuildMessage DisplayName="Build Number Altering Message" sap2010:WorkflowViewState.IdRef="WriteBuildMessage_8" Message="[&quot;Build Number Altered &quot; + AlteredBuildVersion]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+          <mtbwa:SetBuildProperties BuildNumber="[AlteredBuildVersion]" sap2010:WorkflowViewState.IdRef="SetBuildProperties_1" PropertiesToSet="BuildNumber" />
+        </Sequence>
+      </If.Then>
+    </If>
+    <mtbwa:AgentScope DataToIgnore="" DisplayName="Run on agent" sap2010:WorkflowViewState.IdRef="AgentScope_1" MaxExecutionTime="[AgentSettings.GetValue(Of TimeSpan)(&quot;MaxExecutionTime&quot;, new System.TimeSpan(0,0,0))]" MaxWaitTime="[AgentSettings.GetValue(Of TimeSpan)(&quot;MaxWaitTime&quot;, new System.TimeSpan(4,0,0))]" ReservationSpec="[AgentSettings.CreateAgentReservationSpec()]" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces">
+      <mtbac:InitializeEnvironment BinariesFolder="bin" DisplayName="Initialize environment" sap2010:WorkflowViewState.IdRef="InitializeEnvironment_1" SourceFolder="src" TestResultsFolder="tst" />
+      <mtbat:TfGetSources CleanWorkspace="[CleanWorkspace]" CreateLabel="[CreateLabel]" DisplayName="Get sources from Team Foundation Version Control" Enabled="True" sap2010:WorkflowViewState.IdRef="TfGetSources_1" VersionOverride="[GetVersion]" />
+      <mtba:AssociateChanges DisplayName="Associate the changesets that occurred since the last good build" Enabled="True" sap2010:WorkflowViewState.IdRef="AssociateChanges_1" UpdateWorkItems="[UpdateAssociatedWorkItems]" />
+      <TryCatch DisplayName="Try" sap2010:WorkflowViewState.IdRef="TryCatch_1" mtbwt:BuildTrackingParticipant.Importance="Low">
+        <TryCatch.Try>
+          <Sequence DisplayName="Compile, Test and Publish" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <mtba:RunScript Arguments="[AdvancedBuildSettings.GetValue(Of String)(&quot;PreActionScriptArguments&quot;, String.Empty)]" DisplayName="Run optional script before MSBuild" Enabled="True" FilePath="[AdvancedBuildSettings.GetValue(Of String)(&quot;PreActionScriptPath&quot;, String.Empty)]" sap2010:WorkflowViewState.IdRef="RunScript_1" />
+            <Sequence DisplayName="Build Number Alteration Seq" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <If Condition="[VersioningScriptPath IsNot String.Empty]" DisplayName="" sap2010:WorkflowViewState.IdRef="If_4">
+                <If.Then>
+                  <Sequence DisplayName="Run Build Version Altering Script" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                    <mtba:RunScript DisplayName="Run Build Version Altering Script" Enabled="True" FilePath="[VersioningScriptPath]" sap2010:WorkflowViewState.IdRef="RunScript_7" />
+                    <mtbwa:WriteBuildMessage DisplayName="Build Altering Script Message" sap2010:WorkflowViewState.IdRef="WriteBuildMessage_9" Message="Build Version Altering runs" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                  </Sequence>
+                </If.Then>
+              </If>
+            </Sequence>
+            <mtba:RunMSBuild CleanBuild="[CleanBuild]" CommandLineArguments="[String.Format(&quot;/p:SkipInvalidConfigurations=true {0}&quot;, AdvancedBuildSettings.GetValue(Of String)(&quot;MSBuildArguments&quot;, String.Empty))]" ConfigurationsToBuild="[ConfigurationsToBuild]" DisplayName="Run MSBuild" Enabled="True" sap2010:WorkflowViewState.IdRef="RunMSBuild_1" MSBuildMultiProc="True" OutputLocation="[OutputLocation]" ProjectsToBuild="[ProjectsToBuild]" RestoreNuGetPackages="True" RunCodeAnalysis="[AdvancedBuildSettings.GetValue(Of String)(&quot;RunCodeAnalysis&quot;, &quot;AsConfigured&quot;)]" ToolPlatform="[AdvancedBuildSettings.GetValue(Of String)(&quot;MSBuildPlatform&quot;, &quot;Auto&quot;)]" Verbosity="Normal" />
+            <mtba:RunScript Arguments="[AdvancedBuildSettings.GetValue(Of String)(&quot;PostActionScriptArguments&quot;, String.Empty)]" DisplayName="Run optional script after MSBuild" Enabled="True" FilePath="[AdvancedBuildSettings.GetValue(Of String)(&quot;PostActionScriptPath&quot;, String.Empty)]" sap2010:WorkflowViewState.IdRef="RunScript_2" />
+            <Sequence DisplayName="Run Nuget Publish and Pack" sap2010:WorkflowViewState.IdRef="Sequence_3">
+              <mtbwa:WriteBuildMessage DisplayName="Write Nugen Intiation Message" sap2010:WorkflowViewState.IdRef="WriteBuildMessage_5" Message="Nuget Packing Initialized" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+              <If Condition="[IsNugetPack And (NugetPackScriptPath IsNot String.Empty)]" DisplayName="Is NuGet is ready for pack" sap2010:WorkflowViewState.IdRef="If_1">
+                <If.Then>
+                  <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                    <mtbwa:WriteBuildMessage DisplayName="Write Message for Packing" sap2010:WorkflowViewState.IdRef="WriteBuildMessage_1" Message="Packing The spec Files" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                    <mtba:RunScript DisplayName="Run NuGet Pack Script" Enabled="True" FilePath="[NugetPackScriptPath]" sap2010:WorkflowViewState.IdRef="RunScript_5" />
+                    <mtbwa:WriteBuildMessage DisplayName="Write Pack Message" sap2010:WorkflowViewState.IdRef="WriteBuildMessage_6" Message="NuGet Packages have created" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                    <If Condition="[IsNugetPublish And (NugetPublishScriptPath IsNot String.Empty)]" DisplayName="Is NuGet is ready for publish" sap2010:WorkflowViewState.IdRef="If_2">
+                      <If.Then>
+                        <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <mtbwa:WriteBuildMessage DisplayName="Write Message for Publishing" sap2010:WorkflowViewState.IdRef="WriteBuildMessage_2" Message="Publishing The Packes" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                          <mtba:RunScript DisplayName="Run Nuget Publish Script" Enabled="True" FilePath="[NugetPublishScriptPath]" sap2010:WorkflowViewState.IdRef="RunScript_6" />
+                          <mtbwa:WriteBuildMessage DisplayName="Write successful packes Publication" sap2010:WorkflowViewState.IdRef="WriteBuildMessage_7" Message="The NuGet Packages have published to the remote server" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <mtbwa:WriteBuildMessage DisplayName="Write Message for not Publishing" sap2010:WorkflowViewState.IdRef="WriteBuildMessage_3" Message="The NuGet Packages haven't been published" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                      </If.Else>
+                    </If>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <mtbwa:WriteBuildMessage DisplayName="Write Message for Not packing" sap2010:WorkflowViewState.IdRef="WriteBuildMessage_4" Message="The Packages didin't Pack" mva:VisualBasic.Settings="Assembly references and imported namespaces serialized as XML namespaces" />
+                </If.Else>
+              </If>
+            </Sequence>
+            <mtba:RunScript Arguments="[AdvancedTestSettings.GetValue(Of String)(&quot;PreActionScriptArguments&quot;, String.Empty)]" DisplayName="Run optional script before Test Runner" Enabled="True" FilePath="[AdvancedTestSettings.GetValue(Of String)(&quot;PreActionScriptPath&quot;, String.Empty)]" sap2010:WorkflowViewState.IdRef="RunScript_3" />
+            <mtba:RunAgileTestRunner ConfigurationsToTest="[ConfigurationsToBuild]" DisplayName="Run VS Test Runner" Enabled="[Not AdvancedTestSettings.GetValue(Of Boolean)(&quot;DisableTests&quot;, false)]" sap2010:WorkflowViewState.IdRef="RunAgileTestRunner_1" TestSpecs="[AutomatedTests]" />
+            <mtba:RunScript Arguments="[AdvancedTestSettings.GetValue(Of String)(&quot;PostActionScriptArguments&quot;, String.Empty)]" DisplayName="Run optional script after Test Runner" Enabled="True" FilePath="[AdvancedTestSettings.GetValue(Of String)(&quot;PostActionScriptPath&quot;, String.Empty)]" sap2010:WorkflowViewState.IdRef="RunScript_4" />
+            <mtba:RunTestImpact DisplayName="Get Impacted Tests" Enabled="[AdvancedTestSettings.GetValue(Of Boolean)(&quot;AnalyzeTestImpact&quot;, true)]" sap2010:WorkflowViewState.IdRef="RunTestImpact_1" />
+            <mtba:RunPublishSymbols DisplayName="Publish Symbols" Enabled="True" sap2010:WorkflowViewState.IdRef="RunPublishSymbols_1" SymbolStorePath="[SymbolStorePath]" />
+          </Sequence>
+        </TryCatch.Try>
+        <TryCatch.Catches>
+          <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+            <ActivityAction x:TypeArguments="s:Exception">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="s:Exception" Name="ex" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Handle Exception" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                <mtba:CreateBuildFailureBug DisplayName="Create a bug for the build failure" Enabled="[CreateWorkItem]" sap2010:WorkflowViewState.IdRef="CreateBuildFailureBug_1" />
+                <Rethrow DisplayName="Rethrow the exception so the build will stop" sap2010:WorkflowViewState.IdRef="Rethrow_1" />
+              </Sequence>
+            </ActivityAction>
+          </Catch>
+        </TryCatch.Catches>
+        <TryCatch.Finally>
+          <Sequence DisplayName="Perform Final Actions On Agent" sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <mtbac:DropBinaries DestinationPath="{x:Null}" DisplayName="Copy binaries to drop" Enabled="True" sap2010:WorkflowViewState.IdRef="DropBinaries_1" />
+            <mtbac:ResetEnvironment DisplayName="Reset the Environment" sap2010:WorkflowViewState.IdRef="ResetEnvironment_1" />
+          </Sequence>
+        </TryCatch.Finally>
+      </TryCatch>
+    </mtbwa:AgentScope>
+    <mtbwa:InvokeForReason DisplayName="Check In Gated Changes for CheckInShelveset Builds" sap2010:WorkflowViewState.IdRef="InvokeForReason_1" Reason="CheckInShelveset">
+      <mtbwa:CheckInGatedChanges DisplayName="Check In Gated Changes" sap2010:WorkflowViewState.IdRef="CheckInGatedChanges_1" UpdateWorkItems="[UpdateAssociatedWorkItems]" />
+    </mtbwa:InvokeForReason>
+    <sads:DebugSymbol.Symbol>d2BEOlxNeVNwYWNlXFRvc2FuLlRlYW1Gb3VuZGF0aW9uXFRvc2FuLlRlYW1Gb3VuZGF0aW9uLkJ1aWxkXFByb2Nlc3NcRGVmYXVsdEJ1aWxkUHJvY2Vzcy4xMi4xLnhhbWyAAQHhDAGwEQEOAcIHAZULAQ0BzRUB1BUBDAFiAZ4HAQsBlBUBrxUBCgHNEQHVFAEJAbUMAbwMAQgB6xYB8BYBBwH9FQGEFgEGAe8UAfYUAQUBkwwBmgwBBAGOFwGTFwEDAbYLAfULAQK6AQOaAg4CAQG+AQW+AbIBAwGWAb8BBcoBCgMBhgHLAQWVAhgCAQeWAgWYAh0CAQK+AUW+AVoDAZcBvwETvwE9AwGHAcEBCcgBFAMBiQHLAfABywHMAgIBCssBggHLAeMBAgEJywHdAssBiwMCAQjMAQfMAcUBAwGCAc0BB80B+QECAXrOAQfOAeEBAgF2zwEHlAISAgELlwIHlwKvAQIBA8UBC8UBxwEDAZEBxgELxgGwAgMBjQHHAQvHAaABAwGKAcwBpQHMAaoBAwGFAcwBM8wBOAMBhAHMAb0BzAHCAQMBgwHNAaABzQGmAQMBgQHNAUnNAVgCAX/NAegBzQH2AQIBfc0BKs0BPAIBe84BwQHOAd4BAgF4zgF1zgF7AgF30QEL/wEWAgEVjwILkgIWAgERhwIPigIaAgEMlwKPAZcCrAECAQXFAVHFAWgDAZQBxQFzxQGKAQMBkgHGAY4BxgHJAQMBjwHHATHHAUgDAYsB0gEN0gHfAgIBctMBDdwBGAIBZt0BDd0B3wUCAVbeAQ3eAeACAgFS3wEN+QEYAgEq+gEN+gHhAgIBJvsBDfsBpwICASD8AQ38AeICAgEc/QEN/QHRAQIBGv4BDf4BrgECARaQAg2QAqIBAgETkQINkQKAAQIBEogCEYgCtQECAQ6JAhGJAoMBAgEN0gHCAdIByAECAXXSASfSAYgBAgF00gHSAdIBrgICAXPUAQ/bARQCAWfdAbsD3QHOAwIBZN0BggPdAYgDAgFj3QHUBd0B3AUCAWLdAe0E3QHJBQIBYd0B+wPdAd8EAgFg3QFN3QHoAQIBX90B/wHdAZgCAgFd3QGYA90BqgMCAVvdAbsC3QHBAgIBWt0BKd0BNwIBWN0B5APdAeoDAgFX3gHCAd4ByAECAVXeASfeAYkBAgFU3gHSAd4BrwICAVPgAQ/gAZQCAgFP4QEP+AEUAgEr+gHFAfoBywECASn6ASf6AYcBAgEo+gHVAfoBsAICASf7AZIC+wGkAgIBJPsBfvsB0AECASP7ATv7AVQCASH8AcUB/AHLAQIBH/wBJ/wBiAECAR78AdUB/AGxAgIBHf0BSv0BnAECARv+AZgB/gGrAQIBGP4BS/4BUQIBF5ACaJACbgIBFIgCZogCeAIBD9QBHdQBSAIBaNYBE9kBHgIBauABkgHgAa0BAgFR4QEd4QFZAgEs4wET8wEeAgEy9gET9gGYAgIBL9cBFdcBtgECAW7YARXYAZwCAgFr5AEV5AGTAgIBTOUBFeUBqQECAUjmARXmAZECAgFF5wEV8gEaAgEz9gGWAfYBsQECATHXAV3XAWMCAXHXAW3XAYUBAgFv2AGYAdgBtQECAW3kAZQB5AGsAQIBTuUBUeUBVwIBS+UBYeUBeAIBSeYBjQHmAaoBAgFH5wEj5wFlAgE06QEZ7QEkAgE68AEZ8AGxAgIBN+oBG+oBmwICAULrARvrAbUBAgE+7AEb7AHDAgIBO/ABnwHwAcoBAgE56gGdAeoBtAECAUTrAVrrAWACAUHrAWrrAYQBAgE/7AGkAewB3AECAT0=</sads:DebugSymbol.Symbol>
+  </Sequence>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="SetBuildNumber_1" sap:VirtualizedContainerService.HintSize="795,22" />
+      <sap2010:ViewStateData Id="BuildNumberAlteration_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="WriteBuildMessage_8" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="SetBuildProperties_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="222,270">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_3" sap:VirtualizedContainerService.HintSize="795,413" />
+      <sap2010:ViewStateData Id="InitializeEnvironment_1" sap:VirtualizedContainerService.HintSize="773,22" />
+      <sap2010:ViewStateData Id="TfGetSources_1" sap:VirtualizedContainerService.HintSize="773,22" />
+      <sap2010:ViewStateData Id="AssociateChanges_1" sap:VirtualizedContainerService.HintSize="773,22" />
+      <sap2010:ViewStateData Id="RunScript_1" sap:VirtualizedContainerService.HintSize="733,22" />
+      <sap2010:ViewStateData Id="RunScript_7" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="WriteBuildMessage_9" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_10" sap:VirtualizedContainerService.HintSize="222,208">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_4" sap:VirtualizedContainerService.HintSize="464,351" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="733,475">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RunMSBuild_1" sap:VirtualizedContainerService.HintSize="733,22" />
+      <sap2010:ViewStateData Id="RunScript_2" sap:VirtualizedContainerService.HintSize="733,22" />
+      <sap2010:ViewStateData Id="WriteBuildMessage_5" sap:VirtualizedContainerService.HintSize="711,22" />
+      <sap2010:ViewStateData Id="WriteBuildMessage_1" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="RunScript_5" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="WriteBuildMessage_6" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="WriteBuildMessage_2" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="RunScript_6" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="WriteBuildMessage_7" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_7" sap:VirtualizedContainerService.HintSize="222,270">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteBuildMessage_3" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_2" sap:VirtualizedContainerService.HintSize="464,413" />
+      <sap2010:ViewStateData Id="Sequence_6" sap:VirtualizedContainerService.HintSize="486,723">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="WriteBuildMessage_4" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="711,866" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="733,1052">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RunScript_3" sap:VirtualizedContainerService.HintSize="733,22" />
+      <sap2010:ViewStateData Id="RunAgileTestRunner_1" sap:VirtualizedContainerService.HintSize="733,22" />
+      <sap2010:ViewStateData Id="RunScript_4" sap:VirtualizedContainerService.HintSize="733,22" />
+      <sap2010:ViewStateData Id="RunTestImpact_1" sap:VirtualizedContainerService.HintSize="733,22" />
+      <sap2010:ViewStateData Id="RunPublishSymbols_1" sap:VirtualizedContainerService.HintSize="733,22" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="755,2187">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CreateBuildFailureBug_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Rethrow_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_4" sap:VirtualizedContainerService.HintSize="222,208">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Catch`1_1" sap:VirtualizedContainerService.HintSize="759,279">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DropBinaries_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="ResetEnvironment_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Sequence_5" sap:VirtualizedContainerService.HintSize="222,208">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_1" sap:VirtualizedContainerService.HintSize="773,2916">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AgentScope_1" sap:VirtualizedContainerService.HintSize="795,3226">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="CheckInGatedChanges_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="InvokeForReason_1" sap:VirtualizedContainerService.HintSize="795,146">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="817,4051">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TfsBuild.Process_1" sap:VirtualizedContainerService.HintSize="857,4131">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="ShouldExpandAll">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

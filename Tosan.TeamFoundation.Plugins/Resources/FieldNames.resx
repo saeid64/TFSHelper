@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActivityId" xml:space="preserve">
+    <value>Tosan.ActivityId</value>
+  </data>
+  <data name="AreaId" xml:space="preserve">
+    <value>System.AreaId</value>
+  </data>
+  <data name="AssignedTo" xml:space="preserve">
+    <value>System.AssignedTo</value>
+  </data>
+  <data name="BaseLineWork" xml:space="preserve">
+    <value>Tosan.BaseLineWork</value>
+  </data>
+  <data name="ChangeType" xml:space="preserve">
+    <value>Tosan.ChangeType</value>
+  </data>
+  <data name="Commited" xml:space="preserve">
+    <value>Tosan.Scrum.Committed</value>
+  </data>
+  <data name="CreatedBy" xml:space="preserve">
+    <value>System.CreatedBy</value>
+  </data>
+  <data name="CRM_AnalysisActivity_EntitySchemaName" xml:space="preserve">
+    <value>cmdb_analysisactivity</value>
+  </data>
+  <data name="CRM_ChangeActivity_EntitySchemaName" xml:space="preserve">
+    <value>cmdb_changeactivity</value>
+  </data>
+  <data name="CRM_ChangeActivity_IsReopened" xml:space="preserve">
+    <value>new_isreopened</value>
+  </data>
+  <data name="CRM_RFC_EntitySchemaName" xml:space="preserve">
+    <value>cmdb_changerequest</value>
+  </data>
+  <data name="CRM_RFC_PlannedReleaseVersion" xml:space="preserve">
+    <value>new_plannedreleaseversion</value>
+  </data>
+  <data name="CRM_RFC_TotalSchedulDuration" xml:space="preserve">
+    <value>new_tscheduledduration</value>
+  </data>
+  <data name="CRM_TestActivity_EntitySchemaName" xml:space="preserve">
+    <value>cmdb_testactivity</value>
+  </data>
+  <data name="PlannedReleaseVersion" xml:space="preserve">
+    <value>Tosan.PRV</value>
+  </data>
+  <data name="Global_PlannedReleaseVersion" xml:space="preserve">
+    <value>PlannedReleaseVersion</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>System.ID</value>
+  </data>
+  <data name="Iteration" xml:space="preserve">
+    <value>System.IterationPath</value>
+  </data>
+  <data name="LinkParent_Forward" xml:space="preserve">
+    <value>System.LinkTypes.Hierarchy-Forward</value>
+  </data>
+  <data name="LinkParent_Reverse" xml:space="preserve">
+    <value>System.LinkTypes.Hierarchy-Reverse</value>
+  </data>
+  <data name="LinkTask_Forward" xml:space="preserve">
+    <value>Tosan.LinkType.Tasks-Forward</value>
+  </data>
+  <data name="LinkTask_Reverse" xml:space="preserve">
+    <value>Tosan.LinkType.Tasks-Reverse</value>
+  </data>
+  <data name="OriginalEstimate" xml:space="preserve">
+    <value>Microsoft.VSTS.Scheduling.OriginalEstimate</value>
+  </data>
+  <data name="Reason" xml:space="preserve">
+    <value>System.Reason</value>
+  </data>
+  <data name="ReopenCount" xml:space="preserve">
+    <value>Tosan.ReopenCount</value>
+  </data>
+  <data name="RFCId" xml:space="preserve">
+    <value>Tosan.RFCId</value>
+  </data>
+  <data name="Severity" xml:space="preserve">
+    <value>Microsoft.VSTS.Common.Severity</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>System.State</value>
+  </data>
+  <data name="Triage" xml:space="preserve">
+    <value>Microsoft.VSTS.Common.Triage</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>System.WorkItemType</value>
+  </data>
+  <data name="Client" xml:space="preserve">
+    <value>Tosan.Client</value>
+  </data>
+  <data name="CRM_ChangeActivity_Client" xml:space="preserve">
+    <value>cmdb_client</value>
+  </data>
+  <data name="CRM_ChangeActivity_Server" xml:space="preserve">
+    <value>cmdb_server</value>
+  </data>
+  <data name="CRM_ChangeActivity_WebConsole" xml:space="preserve">
+    <value>cmdb_webconsole</value>
+  </data>
+  <data name="Server" xml:space="preserve">
+    <value>Tosan.Server</value>
+  </data>
+  <data name="WebConsole" xml:space="preserve">
+    <value>Tosan.WebConsole</value>
+  </data>
+  <data name="TestType" xml:space="preserve">
+    <value>Tosan.TestType</value>
+  </data>
+  <data name="CRM_RFC_IsRejectedfromTest" xml:space="preserve">
+    <value>new_isrejectedfromtest</value>
+  </data>
+  <data name="CRM_PlannedReleaseVersion_EntitySchemaName" xml:space="preserve">
+    <value>cmdb_plannedreleaseversion</value>
+  </data>
+  <data name="CRM_PlannedReleaseVersion_Name" xml:space="preserve">
+    <value>cmdb_name</value>
+  </data>
+  <data name="CRM_Activity_PlannedReleaseVersion" xml:space="preserve">
+    <value>cmdb_lookupplanreleaseversion</value>
+  </data>
+  <data name="CRM_ChangeActivity_ChangeType" xml:space="preserve">
+    <value>cmdb_changetype</value>
+  </data>
+  <data name="CRM_TestActivity_TestType" xml:space="preserve">
+    <value>new_testtype</value>
+  </data>
+  <data name="ReferencePath" xml:space="preserve">
+    <value>Tosan.ReferencePath</value>
+  </data>
+  <data name="RelatedTestCases" xml:space="preserve">
+    <value>Tosan.RelatedTestCases</value>
+  </data>
+  <data name="TestEnviromentConfiguration" xml:space="preserve">
+    <value>Tosan.TestEnviromentConfiguration</value>
+  </data>
+  <data name="TestPaths" xml:space="preserve">
+    <value>Tosan.TestPaths</value>
+  </data>
+  <data name="TestResultforEachPath" xml:space="preserve">
+    <value>Tosan.TestResult</value>
+  </data>
+  <data name="CRM_TestActivity_ReferencePath" xml:space="preserve">
+    <value>cmdb_refrencepath</value>
+  </data>
+  <data name="CRM_TestActivity_RelatedTestCases" xml:space="preserve">
+    <value>cmdb_relatedtestcase</value>
+  </data>
+  <data name="CRM_TestActivity_TestEnviromentConfiguration" xml:space="preserve">
+    <value>cmdb_testenviromentconfiguration</value>
+  </data>
+  <data name="CRM_TestActivity_TestPath" xml:space="preserve">
+    <value>cmdb_testpath</value>
+  </data>
+  <data name="CRM_TestActivity_TestResultforEachPath" xml:space="preserve">
+    <value>cmdb_testresult</value>
+  </data>
+  <data name="CRM_ChangeActivity_NeginLiteBranchVersion" xml:space="preserve">
+    <value>cmdb_neginlitebranchversionid</value>
+  </data>
+  <data name="CRM_ChangeActivity_NeginliteTrunkVersion" xml:space="preserve">
+    <value>cmdb_neginlitetrunkversionid</value>
+  </data>
+  <data name="CRM_NeginliteVersion_EntitySchemaName" xml:space="preserve">
+    <value>cmdb_neginliteversion</value>
+  </data>
+  <data name="CRM_NeginliteVersion_Name" xml:space="preserve">
+    <value>cmdb_name</value>
+  </data>
+  <data name="NeginLiteBranchVersion" xml:space="preserve">
+    <value>Tosan.NeginLite.BranchVersion</value>
+  </data>
+  <data name="NeginLiteTrunkVersion" xml:space="preserve">
+    <value>Tosan.NeginLite.TrunkVersion</value>
+  </data>
+  <data name="InProgressTimeHours" xml:space="preserve">
+    <value>Tosan.InProgressTimeHours</value>
+  </data>
+  <data name="InProgressTimeSpan" xml:space="preserve">
+    <value>Tosan.InProgressTimeSpan</value>
+  </data>
+  <data name="CRM_Activity_ScheduleddurationH" xml:space="preserve">
+    <value>cmdb_scheduleddurationh</value>
+  </data>
+  <data name="CRM_RFC_TotalScheduledduration" xml:space="preserve">
+    <value>new_tscheduledduration</value>
+  </data>
+  <data name="Effort" xml:space="preserve">
+    <value>Microsoft.VSTS.Scheduling.Effort</value>
+  </data>
+  <data name="ChangeNumber" xml:space="preserve">
+    <value>Tosan.ChangeNumber</value>
+  </data>
+  <data name="CRM_ChangeActivity_Changenumber" xml:space="preserve">
+    <value>cmdb_changenumber</value>
+  </data>
+  <data name="CRM_Activity_Subject" xml:space="preserve">
+    <value>subject</value>
+  </data>
+  <data name="CRM_Team_EntitySchemaName" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>System.Title</value>
+  </data>
+  <data name="ChangedDate" xml:space="preserve">
+    <value>System.ChangedDate</value>
+  </data>
+  <data name="Rev" xml:space="preserve">
+    <value>System.Rev</value>
+  </data>
+  <data name="ActivityNumber" xml:space="preserve">
+    <value>Tosan.ActivityNumber</value>
+  </data>
+  <data name="CRM_Activity_RFCid" xml:space="preserve">
+    <value>regardingobjectid</value>
+  </data>
+  <data name="CRM_AnalysisActivity_AnalysisActivityNumber" xml:space="preserve">
+    <value>cmdb_analysisactivitynumber</value>
+  </data>
+  <data name="CRM_AnalysisActivity_ScheduleddurationH" xml:space="preserve">
+    <value>cmdb_scheduleddurationhours</value>
+  </data>
+  <data name="CRM_ChangeActivity_ChangeActivityNumber" xml:space="preserve">
+    <value>cmdb_changeactivitynumber</value>
+  </data>
+  <data name="CRM_TestActivity_TestActivityNumber" xml:space="preserve">
+    <value>cmdb_testactivitynumber</value>
+  </data>
+  <data name="ReferenceNumber" xml:space="preserve">
+    <value>Tosan.ReferenceNumber</value>
+  </data>
+  <data name="RFCNumber" xml:space="preserve">
+    <value>Tosan.RFCNumber</value>
+  </data>
+  <data name="CRM_User_EntitySchemaName" xml:space="preserve">
+    <value>systemuser</value>
+  </data>
+  <data name="CRM_User_Name" xml:space="preserve">
+    <value>domainname</value>
+  </data>
+  <data name="CRMError" xml:space="preserve">
+    <value>Tosan.CRMError</value>
+  </data>
+  <data name="BaselineWorkforNewTestTask" xml:space="preserve">
+    <value>Tosan.BaselineWorkforNewTest</value>
+  </data>
+  <data name="Activity" xml:space="preserve">
+    <value>Microsoft.VSTS.Common.Activity</value>
+  </data>
+  <data name="CRM_TestActivity_IsReopened" xml:space="preserve">
+    <value>new_isreopened</value>
+  </data>
+  <data name="IsReopen" xml:space="preserve">
+    <value>Tosan.IsReopen</value>
+  </data>
+  <data name="ChangeList" xml:space="preserve">
+    <value>Tosan.ChangeList</value>
+  </data>
+  <data name="CRM_RFC_ChangeList" xml:space="preserve">
+    <value>new_changelist</value>
+  </data>
+  <data name="ChangeListNecessity" xml:space="preserve">
+    <value>Tosan.ChangeListNecessity</value>
+  </data>
+  <data name="CRM_TestActivity_ChangeListNecessity" xml:space="preserve">
+    <value>cmdb_changelistnecessity</value>
+  </data>
+  <data name="DevelopTest" xml:space="preserve">
+    <value>Tosan.DevelopTest</value>
+  </data>
+  <data name="CRM_TestActivity_DevelopTest" xml:space="preserve">
+    <value>cmdb_developtest</value>
+  </data>
+  <data name="CRM_Activity_Description" xml:space="preserve">
+    <value>description</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>System.Description</value>
+  </data>
+  <data name="CreateNewTestTaskAfterRejected" xml:space="preserve">
+    <value>Tosan.CreateNewTestTaskAfterRejected</value>
+  </data>
+  <data name="Customer" xml:space="preserve">
+    <value>Tosan.Customer</value>
+  </data>
+  <data name="CRM_Link" xml:space="preserve">
+    <value>Tosan.CRMLink</value>
+  </data>
+  <data name="RemainingWork" xml:space="preserve">
+    <value>Microsoft.VSTS.Scheduling.RemainingWork</value>
+  </data>
+  <data name="Score" xml:space="preserve">
+    <value>Tosan.Scheduling.Score</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>System.History</value>
+  </data>
+</root>

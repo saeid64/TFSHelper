@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TFSExtensionModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="TFSExtensionModelStoreContainer">
+          <EntitySet Name="bn_Changeset" EntityType="TFSExtensionModel.Store.bn_Changeset" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bn_Label" EntityType="TFSExtensionModel.Store.bn_Label" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bn_WorkItems" EntityType="TFSExtensionModel.Store.bn_WorkItems" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <AssociationSet Name="FK_bn_Changeset_bn_Label" Association="TFSExtensionModel.Store.FK_bn_Changeset_bn_Label">
+            <End Role="bn_Label" EntitySet="bn_Label" />
+            <End Role="bn_Changeset" EntitySet="bn_Changeset" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bn_WorkItems_bn_Changeset" Association="TFSExtensionModel.Store.FK_bn_WorkItems_bn_Changeset">
+            <End Role="bn_Changeset" EntitySet="bn_Changeset" />
+            <End Role="bn_WorkItems" EntitySet="bn_WorkItems" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="bn_Changeset">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="ChangeSetId" Type="int" />
+          <Property Name="LabelId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bn_Label">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Label" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dir" Type="nvarchar(max)" />
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="bn_WorkItems">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="FixedVersion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Severity" Type="nvarchar" MaxLength="50" />
+          <Property Name="Customer" Type="nvarchar" MaxLength="50" />
+          <Property Name="RFCNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Area" Type="nvarchar" MaxLength="50" />
+          <Property Name="ChangeSetId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_bn_Changeset_bn_Label">
+          <End Role="bn_Label" Type="TFSExtensionModel.Store.bn_Label" Multiplicity="1" />
+          <End Role="bn_Changeset" Type="TFSExtensionModel.Store.bn_Changeset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bn_Label">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bn_Changeset">
+              <PropertyRef Name="LabelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bn_WorkItems_bn_Changeset">
+          <End Role="bn_Changeset" Type="TFSExtensionModel.Store.bn_Changeset" Multiplicity="1" />
+          <End Role="bn_WorkItems" Type="TFSExtensionModel.Store.bn_WorkItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bn_Changeset">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bn_WorkItems">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TFSExtensionModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="TFSExtensionCon" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="bn_Changeset" EntityType="TFSExtensionModel.bn_Changeset" />
+          <EntitySet Name="bn_Label" EntityType="TFSExtensionModel.bn_Label" />
+          <EntitySet Name="bn_WorkItems" EntityType="TFSExtensionModel.bn_WorkItems" />
+          <AssociationSet Name="FK_bn_Changeset_bn_Label" Association="TFSExtensionModel.FK_bn_Changeset_bn_Label">
+            <End Role="bn_Label" EntitySet="bn_Label" />
+            <End Role="bn_Changeset" EntitySet="bn_Changeset" />
+          </AssociationSet>
+          <AssociationSet Name="FK_bn_WorkItems_bn_Changeset" Association="TFSExtensionModel.FK_bn_WorkItems_bn_Changeset">
+            <End Role="bn_Changeset" EntitySet="bn_Changeset" />
+            <End Role="bn_WorkItems" EntitySet="bn_WorkItems" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="bn_Changeset">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="ChangeSetId" Type="Int32" />
+          <Property Name="LabelId" Type="Guid" Nullable="false" />
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="bn_Label" Relationship="TFSExtensionModel.FK_bn_Changeset_bn_Label" FromRole="bn_Changeset" ToRole="bn_Label" />
+          <NavigationProperty Name="bn_WorkItems" Relationship="TFSExtensionModel.FK_bn_WorkItems_bn_Changeset" FromRole="bn_Changeset" ToRole="bn_WorkItems" />
+        </EntityType>
+        <EntityType Name="bn_Label">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Label" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Dir" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="bn_Changeset" Relationship="TFSExtensionModel.FK_bn_Changeset_bn_Label" FromRole="bn_Label" ToRole="bn_Changeset" />
+        </EntityType>
+        <EntityType Name="bn_WorkItems">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="Title" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FixedVersion" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Severity" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Customer" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="RFCNumber" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Area" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ChangeSetId" Type="Guid" Nullable="false" />
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="bn_Changeset" Relationship="TFSExtensionModel.FK_bn_WorkItems_bn_Changeset" FromRole="bn_WorkItems" ToRole="bn_Changeset" />
+        </EntityType>
+        <Association Name="FK_bn_Changeset_bn_Label">
+          <End Role="bn_Label" Type="TFSExtensionModel.bn_Label" Multiplicity="1" />
+          <End Role="bn_Changeset" Type="TFSExtensionModel.bn_Changeset" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bn_Label">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bn_Changeset">
+              <PropertyRef Name="LabelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_bn_WorkItems_bn_Changeset">
+          <End Role="bn_Changeset" Type="TFSExtensionModel.bn_Changeset" Multiplicity="1" />
+          <End Role="bn_WorkItems" Type="TFSExtensionModel.bn_WorkItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bn_Changeset">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="bn_WorkItems">
+              <PropertyRef Name="ChangeSetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TFSExtensionModelStoreContainer" CdmEntityContainer="TFSExtensionCon">
+          <EntitySetMapping Name="bn_Changeset">
+            <EntityTypeMapping TypeName="TFSExtensionModel.bn_Changeset">
+              <MappingFragment StoreEntitySet="bn_Changeset">
+                <ScalarProperty Name="ChangeSetId" ColumnName="ChangeSetId" />
+                <ScalarProperty Name="LabelId" ColumnName="LabelId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bn_Label">
+            <EntityTypeMapping TypeName="TFSExtensionModel.bn_Label">
+              <MappingFragment StoreEntitySet="bn_Label">
+                <ScalarProperty Name="Label" ColumnName="Label" />
+                <ScalarProperty Name="Dir" ColumnName="Dir" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="bn_WorkItems">
+            <EntityTypeMapping TypeName="TFSExtensionModel.bn_WorkItems">
+              <MappingFragment StoreEntitySet="bn_WorkItems">
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="FixedVersion" ColumnName="FixedVersion" />
+                <ScalarProperty Name="Severity" ColumnName="Severity" />
+                <ScalarProperty Name="Customer" ColumnName="Customer" />
+                <ScalarProperty Name="RFCNumber" ColumnName="RFCNumber" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="ChangeSetId" ColumnName="ChangeSetId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams />
+  </Designer>
+</edmx:Edmx>
