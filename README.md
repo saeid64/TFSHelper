@@ -2,7 +2,7 @@ Tosan TFSHelper
 =========
 
 As one of the TFS zeal developer and user, I have always been eager to improve TFS api to bring more capability for this excellent ALM system. 
-TFS's api although being well-built and highly programmable, with the experince that I have gained developing and customizing different software (specially Microsoft CRM), the lack of more maintainable plugin system in TFS's api is obvious was me. So I have created this module to improve the ease of creating and managing plugins for TFS; moreover, the lack of Validation Plugins (Plugins that validate the event before being done) in TFS is the key decision point for my organization (whcih being included in this module).
+TFS's api although being well-built and highly programmable, with the experince that I have gained developing and customizing different software (specially Microsoft CRM), the lack of more maintainable plugin system in TFS's api was obvious me. So I have created this module to improve the ease of creating and managing plugins for TFS; moreover, the lack of Validation Plugins (Plugins that validate the event before being done) in TFS is the key decision point for my organization (whcih being included in this module).
 
 this comperhensive package (or module) includes an event aggregator system that sit on top of Team Foundation Server (TFS) api.
 
