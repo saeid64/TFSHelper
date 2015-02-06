@@ -13,9 +13,9 @@ namespace Tosan.TeamFoundation.Plugin.Core.Utility
         {
             try
             {
-                var connection = new CrmConnection(new ConnectionStringSettings("xrm", @"Url=https://crm2011.tosanltd.com/Tosan;Domain=tosanltd.com; Username=tfs; Password=hsb_1234;"))
+                var connection = new CrmConnection(new ConnectionStringSettings("xrm", @""))
                     {
-                        ServiceUri = new Uri(@"https://crm2011.tosanltd.com/Tosan/XRMServices/2011/Organization.svc")
+                        ServiceUri = new Uri(@"")
                     };
                 var myObjectCache = MemoryCache.Default;
                 var myServiceCache = new OrganizationServiceCache(myObjectCache, connection);
