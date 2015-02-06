@@ -60,8 +60,7 @@ namespace TosanTFS.Web.Service
         private void CreateTFSInstance(string collectionName, string impersonateUser)
         {
             ////TfsInstance.EnsureAuthenticated();
-            var cred = new NetworkCredential("TFS", "hsb_1234", "tosanltd.com");
-            //  var cred = new NetworkCredential("hayati", "Hh123456", "tosanltd.com");
+            var cred = new NetworkCredential("AccountUserName", "AccountPassword", "CompanyDomainName");
             var address = TfsUri + collectionName;
             TfsInstance = string.IsNullOrEmpty(impersonateUser)
                 ? new TfsTeamProjectCollection(new Uri(address), cred)
