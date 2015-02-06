@@ -1,4 +1,4 @@
-Tosan TFSHelper
+TFS Helper Library
 =========
 
 As one of the TFS zeal developer and user, I have been always eager to improve TFS api to bring more capability for this excellent ALM system. 
