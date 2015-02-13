@@ -117,179 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Reason_Accepted" xml:space="preserve">
-    <value>Accepted</value>
-  </data>
-  <data name="Reason_AdditionalWorkFound" xml:space="preserve">
-    <value>Additional work found</value>
-  </data>
-  <data name="Reason_Approved" xml:space="preserve">
-    <value>Approved</value>
-  </data>
-  <data name="Reason_Canceled" xml:space="preserve">
-    <value>Canceled</value>
-  </data>
-  <data name="Reason_ClosedinError" xml:space="preserve">
-    <value>Closed in Error</value>
-  </data>
-  <data name="Reason_Complete_RequiresTest" xml:space="preserve">
-    <value>Complete &amp; Requires Test</value>
-  </data>
-  <data name="Reason_DevComplete" xml:space="preserve">
-    <value>Dev Complete</value>
-  </data>
-  <data name="Reason_DevComplete_Review" xml:space="preserve">
-    <value>Dev Complete/Review</value>
-  </data>
-  <data name="Reason_DoesNotRequireTest" xml:space="preserve">
-    <value>Does Not Require Test</value>
-  </data>
-  <data name="Reason_Duplicate" xml:space="preserve">
-    <value>Duplicate</value>
-  </data>
-  <data name="Reason_Fixed" xml:space="preserve">
-    <value>Fixed</value>
-  </data>
-  <data name="Reason_InvestigationComplete" xml:space="preserve">
-    <value>Investigation Complete</value>
-  </data>
-  <data name="Reason_IsNotRejected" xml:space="preserve">
-    <value>Is Not Rejected</value>
-  </data>
-  <data name="Reason_New" xml:space="preserve">
-    <value>New</value>
-  </data>
-  <data name="Reason_NewTask" xml:space="preserve">
-    <value>New task</value>
-  </data>
-  <data name="Reason_Notfixed" xml:space="preserve">
-    <value>Not fixed</value>
-  </data>
-  <data name="Reason_Reactivated" xml:space="preserve">
-    <value>Reactivated</value>
-  </data>
-  <data name="Reason_ReconsideringtheTask" xml:space="preserve">
-    <value>Reconsidering the Task</value>
-  </data>
-  <data name="Reason_Rejected" xml:space="preserve">
-    <value>Rejected</value>
-  </data>
-  <data name="Reason_Removedfromthebacklog" xml:space="preserve">
-    <value>Removed from the backlog</value>
-  </data>
-  <data name="Reason_Review_TestFailed" xml:space="preserve">
-    <value>Review/Test Failed</value>
-  </data>
-  <data name="Reason_Review_TestPassed" xml:space="preserve">
-    <value>Review/Test Passed</value>
-  </data>
-  <data name="Reason_TestFailed" xml:space="preserve">
-    <value>Test Failed</value>
-  </data>
-  <data name="Reason_TheTaskIsBlocked" xml:space="preserve">
-    <value>The Task Is Blocked</value>
-  </data>
-  <data name="Reason_TheTAskIsUnblocked" xml:space="preserve">
-    <value>The TAsk Is Unblocked</value>
-  </data>
-  <data name="Reason_Verified" xml:space="preserve">
-    <value>Verified</value>
-  </data>
-  <data name="Reason_WithoutChangeList" xml:space="preserve">
-    <value>Without Changelist</value>
-  </data>
-  <data name="Reason_WorkFinished" xml:space="preserve">
-    <value>Work finished</value>
-  </data>
-  <data name="Reason_WorkStarted" xml:space="preserve">
-    <value>Work started</value>
-  </data>
-  <data name="Reason_WorkStopped" xml:space="preserve">
-    <value>Work stopped</value>
-  </data>
-  <data name="Severity_Blocker" xml:space="preserve">
-    <value>Blocker</value>
-  </data>
-  <data name="Severity_Critical" xml:space="preserve">
-    <value>Critical</value>
-  </data>
-  <data name="State_Active" xml:space="preserve">
-    <value>Active</value>
-  </data>
-  <data name="State_Blocked" xml:space="preserve">
-    <value>Blocked</value>
-  </data>
-  <data name="State_Closed" xml:space="preserve">
-    <value>Closed</value>
-  </data>
-  <data name="State_Done" xml:space="preserve">
-    <value>Done</value>
-  </data>
-  <data name="State_InProgress" xml:space="preserve">
-    <value>In Progress</value>
-  </data>
-  <data name="State_Proposed" xml:space="preserve">
-    <value>Proposed</value>
-  </data>
-  <data name="State_Removed" xml:space="preserve">
-    <value>Removed</value>
-  </data>
-  <data name="State_Resolved" xml:space="preserve">
-    <value>Resolved</value>
-  </data>
-  <data name="State_Tested" xml:space="preserve">
-    <value>Tested</value>
-  </data>
-  <data name="State_ToDo" xml:space="preserve">
-    <value>To Do</value>
-  </data>
-  <data name="Triage_DevPlanned" xml:space="preserve">
-    <value>برنامه ریزی شده نگهداری</value>
-  </data>
-  <data name="Triage_NotPlanned" xml:space="preserve">
-    <value>برنامه ریزی نشده</value>
-  </data>
-  <data name="Triage_Planned" xml:space="preserve">
-    <value>برنامه ریزی شده</value>
-  </data>
-  <data name="Triage_TestPlanned" xml:space="preserve">
-    <value>برنامه ریزی شده تست</value>
-  </data>
-  <data name="WI_AnalysisTask" xml:space="preserve">
-    <value>Analysis Task</value>
-  </data>
   <data name="WI_Bug" xml:space="preserve">
     <value>Bug</value>
-  </data>
-  <data name="WI_DevTask" xml:space="preserve">
-    <value>Dev Task</value>
   </data>
   <data name="WI_Link_Related" xml:space="preserve">
     <value>RelatedLink</value>
   </data>
   <data name="WI_Requirement" xml:space="preserve">
     <value>Requirement</value>
-  </data>
-  <data name="WI_TestTask" xml:space="preserve">
-    <value>Test Task</value>
-  </data>
-  <data name="ChangeType_Applications" xml:space="preserve">
-    <value>نرم افزاری</value>
-  </data>
-  <data name="ChangeType_Hardware" xml:space="preserve">
-    <value>سخت افزاری</value>
-  </data>
-  <data name="ChangeType_Change_Model" xml:space="preserve">
-    <value>تغییر Model</value>
-  </data>
-  <data name="ChangeType_Code_Review" xml:space="preserve">
-    <value>Code Review</value>
-  </data>
-  <data name="ChangeType_Configuration" xml:space="preserve">
-    <value>پیکر بندی</value>
-  </data>
-  <data name="ChangeType_Infrastructure" xml:space="preserve">
-    <value>زیر ساختی</value>
   </data>
   <data name="WI_ProductBacklogItem" xml:space="preserve">
     <value>Product Backlog Item</value>
@@ -299,14 +134,5 @@
   </data>
   <data name="WI_Task" xml:space="preserve">
     <value>Task</value>
-  </data>
-  <data name="Reason_WorkisCanceled" xml:space="preserve">
-    <value>Work is Canceled</value>
-  </data>
-  <data name="Reason_Rejectedfromtest" xml:space="preserve">
-    <value>Rejected from test</value>
-  </data>
-  <data name="String1" xml:space="preserve">
-    <value>Reconsidering the Task</value>
   </data>
 </root>

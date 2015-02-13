@@ -117,10 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CRMError" xml:space="preserve">
-    <value>هنگام تغییر وضعیت در ابزار CRM این خطا رخ داد: {0}</value>
-  </data>
-  <data name="FieldRequireFilling" xml:space="preserve">
-    <value>برای انجام این عملیات، لطفاً ابتدا  فیلد(های) {0} را مقدار دهی و تسک را Save نمایید.</value>
-  </data>
 </root>

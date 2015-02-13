@@ -67,7 +67,7 @@ namespace TFSHelper.Plugin.Core.Plugins.Concrete
 
                 //Rollbacks all the Changes by a TFSJob
                 var jobService = teamfoundationRequestContext.GetService<TeamFoundationJobService>();
-                jobService.QueueOneTimeJob(teamfoundationRequestContext, "WorkItem Rollback Job", "Tosan.TeamFoundation.Job.RollBackJob", GetXml(rollingBackTfsItems), true);
+                jobService.QueueOneTimeJob(teamfoundationRequestContext, "WorkItem Rollback Job", "TFSHelper.Job.RollBackJob", GetXml(rollingBackTfsItems), true);
                 return new TFPluginProcessResponse { IsValid = true, Message = statusmsg };
             }
             catch (Exception)

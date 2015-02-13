@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using TFSHelper.Web.Service.Model;
 
 namespace TFSHelper.Web.Service
 {

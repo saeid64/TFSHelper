@@ -140,7 +140,7 @@
     <Compile Include="Utility\EventXmlSerializer.cs" />
     <Compile Include="Utility\OrganizationXrmUtility.cs" />
     <Compile Include="Utility\RequestType.cs" />
-    <Compile Include="Utility\TosanTeamFoundationException.cs" />
+    <Compile Include="Utility\TFSHelperException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

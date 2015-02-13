@@ -82,7 +82,6 @@
     <Compile Include="Helper\WorkItemExtension.cs" />
     <Compile Include="Logger\Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scrum\FeatureHandler.cs" />
     <Compile Include="Resources\ErrorMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -98,14 +97,8 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Scrum\AnalysisTaskHandler.cs" />
     <Compile Include="Scrum\BugHandler.cs" />
-    <Compile Include="Scrum\CheckInPolicy.cs" />
-    <Compile Include="Scrum\DevTaskHandler.cs" />
     <Compile Include="Scrum\GlobalHandler.cs" />
-    <Compile Include="Scrum\NotificationHandler.cs" />
-    <Compile Include="Scrum\ProductBacklogItem.cs" />
-    <Compile Include="Scrum\TestTaskHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\ErrorMessages.resx">

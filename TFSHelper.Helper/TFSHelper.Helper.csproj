@@ -68,7 +68,6 @@
     <Compile Include="Model\ChangeSet.cs" />
     <Compile Include="Model\TFSItem.cs" />
     <Compile Include="NotificationService.cs" />
-    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushService.cs" />
     <Compile Include="Resource\TFFieldName.Designer.cs">

@@ -59,23 +59,5 @@ namespace TFSHelper.Plugins.Resources {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to هنگام تغییر وضعیت در ابزار CRM این خطا رخ داد: {0}.
-        /// </summary>
-        internal static string CRMError {
-            get {
-                return ResourceManager.GetString("CRMError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to برای انجام این عملیات، لطفاً ابتدا  فیلد(های) {0} را مقدار دهی و تسک را Save نمایید..
-        /// </summary>
-        internal static string FieldRequireFilling {
-            get {
-                return ResourceManager.GetString("FieldRequireFilling", resourceCulture);
-            }
-        }
     }
 }

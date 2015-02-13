@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.TeamFoundation;
 using Microsoft.TeamFoundation.Common;
+using Microsoft.VisualStudio.Services.ClientNotification;
 
 namespace TFSHelper.Plugin.Core.Plugins
 {
@@ -28,7 +29,6 @@ namespace TFSHelper.Plugin.Core.Plugins
                 if (notificationType != NotificationType.Notification) return EventNotificationStatus.ActionDenied;
 
                 var changedEventArgs = notificationEventArgs as WorkItemChangedEvent;
-                //If Changer is Service User 'tosanltd\tfs' Cancel and return Plugin
                 if (changedEventArgs.ChangerTeamFoundationId.ToLower() == "efc74553-5a42-4b24-b794-e571d266caa6") return EventNotificationStatus.ActionApproved;
 
                 var pluginSericeFactory = new TFPluginServiceFactory();

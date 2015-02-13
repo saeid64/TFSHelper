@@ -106,16 +106,16 @@ namespace TFSHelper.Helper
                 IsBodyHtml = true,
                 Subject = "TFS Notification",
                 SubjectEncoding = Encoding.UTF8,
-                From = new MailAddress("tfs@kishware.com")
+                From = new MailAddress("tfs@companydomain.com")
             };
 
             foreach (var person in recipients)
             {
                 message.To.Add(new MailAddress(person.EmailAddress, person.DisplayName));
             }
-            using (var client = new SmtpClient("mail.tosanltd.com"))
+            using (var client = new SmtpClient("mail.companydomain.com"))
             {
-                client.Credentials = new NetworkCredential("TFS", "hsb_1234", "tosanltd.com");
+                client.Credentials = new NetworkCredential("tfsUser", "Password", "companydomain.com");
                 client.Send(message);
             }
         }

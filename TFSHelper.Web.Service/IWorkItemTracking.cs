@@ -205,10 +205,10 @@ namespace TFSHelper.Web.Service
                 switch (WorkItemTypeCode)
                 {
                     case 1:
-                        tfsField = Fields.SingleOrDefault(field => field.Id == "Tosan.RFCId");
+                        tfsField = Fields.SingleOrDefault(field => field.Id == "RFCId");
                         break;
                     case 2:
-                        tfsField = Fields.SingleOrDefault(field => field.Id == "Tosan.ActivityId");
+                        tfsField = Fields.SingleOrDefault(field => field.Id == "ActivityId");
                         break;
                 }
                 return tfsField != null ? tfsField.ToString() : null;

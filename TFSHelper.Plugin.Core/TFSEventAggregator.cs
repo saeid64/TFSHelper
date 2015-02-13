@@ -57,10 +57,10 @@ namespace TFSHelper.Plugin.Core
                         pluginSubscription.Action.Invoke(tfsEventArgs);
                         _logger.Info(pluginSubscription.Action.Method.Name);
                     }
-                    catch (TosanTeamFoundationException tosanException)
+                    catch (TFSHelperException exception)
                     {
-                        ((log4net.Repository.Hierarchy.Logger)_logger.Logger).Log(tosanException.LogLevel,
-                            tosanException.Message, new Exception(tosanException.StackTrace));
+                        ((log4net.Repository.Hierarchy.Logger)_logger.Logger).Log(exception.LogLevel,
+                            exception.Message, new Exception(exception.StackTrace));
                         return;
                     }
                     catch (Exception e)
@@ -80,10 +80,10 @@ namespace TFSHelper.Plugin.Core
                         pluginSubscription.Action.EndInvoke(asyncResult);
                         _logger.Info(pluginSubscription.Action.Method.Name);
                     }
-                    catch (TosanTeamFoundationException tosanException)
+                    catch (TFSHelperException exception)
                     {
-                        ((log4net.Repository.Hierarchy.Logger)_logger.Logger).Log(tosanException.LogLevel,
-                            tosanException.Message, new TosanTeamFoundationException(tosanException.StackTrace));
+                        ((log4net.Repository.Hierarchy.Logger)_logger.Logger).Log(exception.LogLevel,
+                            exception.Message, new TFSHelperException(exception.StackTrace));
                     }
                     catch (Exception e)
                     {
@@ -101,7 +101,7 @@ namespace TFSHelper.Plugin.Core
 
         public void Init()
         {
-            var assembly = Assembly.Load("Tosan.TeamFoundation.Plugins");
+            var assembly = Assembly.Load("TFSHelper.Plugins");
             var plugInType = typeof(IEventHandler);
             assembly.GetTypes().Where(t => plugInType.IsAssignableFrom(t) && t.IsAbstract == false)
                 .Select(Activator.CreateInstance)

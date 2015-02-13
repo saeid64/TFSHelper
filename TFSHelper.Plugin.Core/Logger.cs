@@ -1,7 +1,8 @@
 ﻿using System.Linq;
+using TFSHelper.Plugin.Core.Resources;
 using TFSHelper.Plugin.Core.Utility;
 
-[assembly: log4net.Config.XmlConfigurator(ConfigFileExtension = "log4net", Watch = true, ConfigFile = "TosanTFSLog.config")]
+[assembly: log4net.Config.XmlConfigurator(ConfigFileExtension = "log4net", Watch = true, ConfigFile = "Log.config")]
 namespace TFSHelper.Plugin.Core
 {
     internal static class Logger

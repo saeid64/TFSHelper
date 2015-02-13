@@ -29,7 +29,7 @@
  xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
  xmlns:sl="clr-namespace:System.Linq;assembly=System.Core"
  xmlns:this="clr-namespace:TfsBuild"
- xmlns:ttba="clr-namespace:Tosan.TeamFoundation.Build.Activities;assembly=Tosan.TeamFoundation.Build.Activities"
+ xmlns:ttba="clr-namespace:TFSHelper.Build.Activities;assembly=TFSHelper.Build.Activities"
  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="ProjectsToBuild" Type="InArgument(s:String[])" />
@@ -179,7 +179,7 @@
       <AssemblyReference>WindowsBase</AssemblyReference>
       <AssemblyReference>PresentationCore</AssemblyReference>
       <AssemblyReference>System.Xaml</AssemblyReference>
-      <AssemblyReference>Tosan.TeamFoundation.Build</AssemblyReference>
+      <AssemblyReference>TFSHelper.Build</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
